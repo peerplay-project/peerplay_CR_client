@@ -1,37 +1,22 @@
-# switch-lan-play
-[![Build status](https://github.com/spacemeowx2/switch-lan-play/workflows/Build/badge.svg)](https://github.com/spacemeowx2/switch-lan-play/actions?query=workflow%3ABuild)
-[![Chat on discord](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/zEMCu5n)
+# Peerplay CR Client
 
-English | [中文](README_zh.md)
-
-Make you and your friends play games like in a LAN.
+Fork of switch-lan-play by Spacemeowx2 for improving it
 
 ```
-                     Internet
-                        |
-                  [SOCKS5 Proxy] (optional)
-                        |
-        ARP,IPv4        |          LAN Packets
-Switch <-------->  PC(lan-play)  <-------------> Server
-                                       UDP
+Console <-----------> Peerplay <------------> Peerplay <===========> Peerplay <------------> Peerplay <----------> Console
+            PCAP      CRClient     V-LAN      CRServer     V-LAN     CRServer      V-LAN     CRClient     PCAP
+          ARP,IPv4             ^ UDP (LAN) ^               UDP          ^     ^ UDP (LAN) ^             ARP,IPv4
+                              (Client/Server)         (P2P Network)     |    (Client/Server)
+                                                                        |  
+                                                                        |
+                                                                        \ -----------------> Peerplay <----------> Console
+                                                                           UDP (Internet)    CRClient     PCAP
+                                                                                                        ARP,IPv4
 ```
-
-**NOTE:**
-* This project is in an early stage. The protocol may change frequently.
 
 # Usage
 
-To play with your friends, you and your friends should run lan-play client connecting to the **same** Server on your PC, and set static IP on your Switch.
-
-Your PC and Switch **must** be connected to the same router.
-
-Visit [https://www.lan-play.com/](http://lan-play.com/install-switch) for steps on how to set this up. See below for build instructions.
-
-## SOCKS5 Proxy
-
-lan-play --socks5-server-addr example.com:1080
-
-Data sent to the relay server does not pass through the proxy.
+This Project is a part of the Peerplay project, to install the program and play we recommend using the main repo accessible here [peerplay-project/peerplay: Main Application of peerplay-project](https://github.com/peerplay-project/peerplay)
 
 # Build
 
@@ -131,7 +116,6 @@ Meanwhile the monitor service will be started on port `11451/tcp` by default, yo
 Request: `GET http://{YOUR_SERVER_IP}:11451/info`
 
 Response: `{ "online": 42 }`
-
 
 # Protocol
 
