@@ -14,7 +14,8 @@ jobs:
         submodules: true
     - name: Install dependencies
       run: |
-        sudo apt-get install -y libpcap-dev
+        sudo apt-get update
+        sudo apt install libpcap0.8-dev git gcc g++ cmake
     - name: Make Build
       run: |
         mv src/config-${{ matrix.config }}.h.bak src/config.h
