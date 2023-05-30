@@ -16,6 +16,11 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt install libpcap0.8-dev git gcc g++ cmake
+        
+        sudo add-apt-repository ppa:ubuntu-toolchain-r/test # Ignore if not ubuntu
+        sudo apt-get update
+        sudo apt-get install gcc-4.9
+        sudo apt-get upgrade libstdc++6
     - name: Make Build
       run: |
         mv src/config-${{ matrix.config }}.h.bak src/config.h
