@@ -11,7 +11,7 @@ if (UV_LIBRARY)
     )
 else()
     message(STATUS "Installing libuv via submodule")
-    execute_process(COMMAND git submodule update --init -- external/libuv
+    execute_process(COMMAND bash -c "git submodule update --init -- external/libuv && cd external/libuv && git checkout v1.24.1"
                     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
     add_subdirectory(external/libuv EXCLUDE_FROM_ALL)
     target_include_directories(uv_a INTERFACE external/libuv/include)
@@ -33,7 +33,7 @@ if (UVW_LIBRARY)
     )
 else()
     message(STATUS "Installing uvw via submodule")
-    execute_process(COMMAND git submodule update --init -- external/uvw
+    execute_process(COMMAND bash -c "git submodule update --init -- external/uvw && cd external/uvw && git checkout v1.12.0_libuv-v1.24"
                     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
     add_subdirectory(external/uvw EXCLUDE_FROM_ALL)
     include_directories(external/uvw/src)
