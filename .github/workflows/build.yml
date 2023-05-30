@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build-linux:
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         config: [PS3,XBOX-360,PS4,XBOX-ONE,SWITCH,PS5,XBOX-SERIES]
