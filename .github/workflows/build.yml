@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build-linux:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.02
     strategy:
       matrix:
         config: [PS3,XBOX-360,PS4,XBOX-ONE,SWITCH,PS5,XBOX-SERIES]
@@ -14,7 +14,6 @@ jobs:
         submodules: true
     - name: Install dependencies
       run: |
-        sudo apt-get update
         sudo apt-get install -y libpcap-dev
     - name: Make Build
       run: |
