@@ -16,9 +16,9 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt install libpcap0.8-dev git gcc g++ cmake
-        export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH
     - name: Make Build
       run: |
+        export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH
         mv src/config-${{ matrix.config }}.h.bak src/config.h
         mkdir build
         cd build
